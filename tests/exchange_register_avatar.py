@@ -134,6 +134,7 @@ if __name__ == '__main__':
     print("generate a multisig address: {}".format(multisig_address))
 
     # send 0.0001 ETP to the multisig address
+    print("sending etp to multisig address")
     errmsg = send_etp(account_name, account_pwd, multisig_address, 10000)
     if None != errmsg:
         print("Failed to send ETP to {}. error: {}".format(address, errmsg))
@@ -143,9 +144,15 @@ if __name__ == '__main__':
         sys.exit(0)
 
     # transfer DID to the multisig address
-    errmsg = transfer_did(account_name, account_pwd, multisig_address, did)
-    if None != errmsg:
+    print("transfering did to multisig address")
+    rawtx = transfer_did(account_name, account_pwd, multisig_address, did)
+    if None == rawtx:
         print("Failed to transfer DID {} to {}.\nerror: {}".format(did, multisig_address, errmsg))
+        sys.exit(0)
+
+    errmsg = broadcast_rawtx(rawtx)
+    if None != errmsg:
+        print("Failed to broadcast rawtx {}. error: {}".format(rawtx, errmsg))
         sys.exit(0)
 
     if wait_mining([did, multisig_address], lambda x : get_did(x[0])[0]['address'] != x[1]):
