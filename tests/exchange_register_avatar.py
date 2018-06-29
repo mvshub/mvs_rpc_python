@@ -66,7 +66,7 @@ def wait_mining(param, func):
     i = 0
     while i < 20:
         if func(param):
-            print("wait for miner to package")
+            print("waiting for miner to package")
             time.sleep(10)
         else:
             return False
@@ -164,13 +164,15 @@ if __name__ == '__main__':
 # Please input the name of DID:'avatar01@Alice'
 # user want to register DID: avatar01@Alice
 # generate a new address: MUfeU351P7ipuUFJcotzQzDesKHHpuiFpA
-# wait for miner to package
+# waiting for miner to package
 # ** Successfully registered did avatar01@Alice to MUfeU351P7ipuUFJcotzQzDesKHHpuiFpA
 #
 # Please input user's public key:"0344befcd59670651a6441c00ef26caa104bab8ff9e5ec3f6e9b65bac9194cad0a"
 # User's public key: 0344befcd59670651a6441c00ef26caa104bab8ff9e5ec3f6e9b65bac9194cad0a
 # the public key of the address: 034354fb24938a6b061341e9fdae6b35e3391958c52dccdfc27213ae3ae68288b7
 # generate a multisig address: 3H62VSQPshYgxmDqCUbyZcaPCenLfJQrUH
-# wait for miner to package
-# wait for miner to package
+# sending etp to multisig address
+# waiting for miner to package
+# transfering did to multisig address
+# waiting for miner to package
 # ** Successfully transfered did avatar01@Alice to 3H62VSQPshYgxmDqCUbyZcaPCenLfJQrUH
