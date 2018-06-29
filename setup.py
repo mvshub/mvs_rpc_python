@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 setup(
     name = 'mvs_rpc',
     version = '0.1.0',
-    keywords = ('mvs sdk', ),
+    keywords = ['mvs sdk', 'mvs client'],
     description = 'python implement of mvs rpc',
     classifiers=[
         'Development Status :: 3 - Alpha',
