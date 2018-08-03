@@ -36,24 +36,26 @@ def signmultisigtx(ACCOUNTNAME, ACCOUNTAUTH, TRANSACTION, selfpublickey=None, br
 
 
 @mvs_api_v2
-def registerdid(ACCOUNTNAME, ACCOUNTAUTH, ADDRESS, SYMBOL, fee=None):
+def registerdid(ACCOUNTNAME, ACCOUNTAUTH, ADDRESS, SYMBOL, fee=None, percentage=None):
     '''
     :param: ACCOUNTNAME(str): Account name required.
     :param: ACCOUNTAUTH(str): Account password(authorization) required.
     :param: ADDRESS(str): "The address will be bound to, can change to other addresses later."
     :param: SYMBOL(str): "The symbol of global unique MVS Digital Identity Destination/Index, supports alphabets/numbers/(“@”, “.”, “_”, “-“), case-sensitive, maximum length is 64."
     :param: fee(int): "The fee of tx. defaults to 1 etp."
+    :param: percentage(int): "Percentage of fee send to miner. minimum is 20."
     '''
     positional = [ACCOUNTNAME, ACCOUNTAUTH, ADDRESS, SYMBOL]
 
     optional = {
         "fee": fee,
+        "percentage": percentage,
     }
     return 'registerdid', positional, optional
 
 
 @mvs_api_v2
-def issue(ACCOUNTNAME, ACCOUNTAUTH, SYMBOL, model=None, fee=None):
+def issue(ACCOUNTNAME, ACCOUNTAUTH, SYMBOL, model=None, fee=None, percentage=None):
     '''
     :param: ACCOUNTNAME(str): Account name required.
     :param: ACCOUNTAUTH(str): Account password(authorization) required.
@@ -68,12 +70,14 @@ def issue(ACCOUNTNAME, ACCOUNTAUTH, SYMBOL, model=None, fee=None):
         TYPE=2;LQ=9000;LP=60000;UN=3;UC=20000,20000,20000;UQ=3000,3000,3000
     defaults to disable.
     :param: fee(int): "The fee of tx. minimum is 10 etp."
+    :param: percentage(int): "Percentage of fee send to miner. minimum is 20."
     '''
     positional = [ACCOUNTNAME, ACCOUNTAUTH, SYMBOL]
 
     optional = {
         "model": model,
         "fee": fee,
+        "percentage": percentage,
     }
     return 'issue', positional, optional
 
@@ -113,7 +117,7 @@ def stopmining(ADMINNAME=None, ADMINAUTH=None):
 
 
 @mvs_api_v2
-def createmultisigtx(ACCOUNTNAME, ACCOUNTAUTH, FROMADDRESS, TOADDRESS, AMOUNT, symbol=None, type_=None, fee=None):
+def createmultisigtx(ACCOUNTNAME, ACCOUNTAUTH, FROMADDRESS, TOADDRESS, AMOUNT, symbol=None, type=None, fee=None):
     '''
     :param: ACCOUNTNAME(str): Account name required.
     :param: ACCOUNTAUTH(str): Account password(authorization) required.
@@ -121,14 +125,14 @@ def createmultisigtx(ACCOUNTNAME, ACCOUNTAUTH, FROMADDRESS, TOADDRESS, AMOUNT, s
     :param: TOADDRESS(str): "Send to this address"
     :param: AMOUNT(int): "ETP integer bits."
     :param: symbol(str): "asset name, not specify this option for etp tx"
-    :param: type_(int): "Transaction type, defaults to 0. 0 -- transfer etp, 3 -- transfer asset"
+    :param: type(int): "Transaction type, defaults to 0. 0 -- transfer etp, 3 -- transfer asset"
     :param: fee(int): "Transaction fee. defaults to 10000 ETP bits"
     '''
     positional = [ACCOUNTNAME, ACCOUNTAUTH, FROMADDRESS, TOADDRESS, AMOUNT]
 
     optional = {
         "symbol": symbol,
-        "type": type_,
+        "type": type,
         "fee": fee,
     }
     return 'createmultisigtx', positional, optional
@@ -186,7 +190,7 @@ def getaccountasset(ACCOUNTNAME, ACCOUNTAUTH, SYMBOL=None, cert=None):
 
 
 @mvs_api_v2
-def didsendasset(ACCOUNTNAME, ACCOUNTAUTH, TO_, ASSET, AMOUNT, model=None, fee=None):
+def didsendasset(ACCOUNTNAME, ACCOUNTAUTH, TO_, ASSET, AMOUNT, model=None, fee=None, message=None):
     '''
     :param: ACCOUNTNAME(str): Account name required.
     :param: ACCOUNTAUTH(str): Account password(authorization) required.
@@ -203,12 +207,14 @@ def didsendasset(ACCOUNTNAME, ACCOUNTAUTH, TO_, ASSET, AMOUNT, model=None, fee=N
         TYPE=2;LQ=9000;LP=60000;UN=3;UC=20000,20000,20000;UQ=3000,3000,3000
     defaults to disable.
     :param: fee(int): "Transaction fee. defaults to 10000 ETP bits"
+    :param: message(str): "Information attached to this transaction"
     '''
     positional = [ACCOUNTNAME, ACCOUNTAUTH, TO_, ASSET, AMOUNT]
 
     optional = {
         "model": model,
         "fee": fee,
+        "message": message,
     }
     return 'didsendasset', positional, optional
 
@@ -243,15 +249,17 @@ def popblock(height):
 
 
 @mvs_api_v2
-def listbalances(ACCOUNTNAME, ACCOUNTAUTH, nozero=None, greater_equal=None, lesser_equal=None):
+def listbalances(ACCOUNTNAME, ACCOUNTAUTH, deposited=None, nozero=None, greater_equal=None, lesser_equal=None):
     '''
-    :param: nozero(bool): "Defaults to false."
+    :param: deposited(bool): "list deposited ETPs, default is false."
+    :param: nozero(bool): "Default is false."
     :param: greater_equal(int): "Greater than ETP bits."
     :param: lesser_equal(int): "Lesser than ETP bits."
     :param: ACCOUNTNAME(str): Account name required.
     :param: ACCOUNTAUTH(str): Account password(authorization) required.
     '''
     positional = [ACCOUNTNAME, ACCOUNTAUTH]
+    if deposited == True: positional.append("--deposited")
     if nozero == True: positional.append("--nozero")
     optional = {
         "greater_equal": greater_equal,
@@ -320,9 +328,9 @@ def changepasswd(ACCOUNTNAME, ACCOUNTAUTH, password):
 
 
 @mvs_api_v2
-def createrawtx(type_, senders, receivers, symbol=None, deposit=None, mychange=None, message=None, fee=None):
+def createrawtx(type, senders, receivers, symbol=None, deposit=None, mychange=None, message=None, fee=None):
     '''
-    :param: type_(int): "Transaction type. 0 -- transfer etp, 1 -- deposit etp, 3 -- transfer asset"
+    :param: type(int): "Transaction type. 0 -- transfer etp, 1 -- deposit etp, 3 -- transfer asset"
     :param: senders([str1, str2, ...]): "Send from addresses"
     :param: receivers([str1, str2, ...]): "Send to [address:amount]. amount is asset number if sybol option specified"
     :param: symbol(str): "asset name, not specify this option for etp tx"
@@ -334,7 +342,7 @@ def createrawtx(type_, senders, receivers, symbol=None, deposit=None, mychange=N
     positional = []
 
     optional = {
-        "type": type_,
+        "type": type,
         "senders": senders,
         "receivers": receivers,
         "symbol": symbol,
@@ -507,7 +515,7 @@ def fetchheaderext(ACCOUNTNAME, ACCOUNTAUTH, NUMBER):
 
 
 @mvs_api_v2
-def didsendassetfrom(ACCOUNTNAME, ACCOUNTAUTH, FROM_, TO_, SYMBOL, AMOUNT, model=None, fee=None):
+def didsendassetfrom(ACCOUNTNAME, ACCOUNTAUTH, FROM_, TO_, SYMBOL, AMOUNT, model=None, fee=None, message=None):
     '''
     :param: ACCOUNTNAME(str): Account name required.
     :param: ACCOUNTAUTH(str): Account password(authorization) required.
@@ -525,12 +533,14 @@ def didsendassetfrom(ACCOUNTNAME, ACCOUNTAUTH, FROM_, TO_, SYMBOL, AMOUNT, model
         TYPE=2;LQ=9000;LP=60000;UN=3;UC=20000,20000,20000;UQ=3000,3000,3000
     defaults to disable.
     :param: fee(int): "Transaction fee. defaults to 10000 ETP bits"
+    :param: message(str): "Information attached to this transaction"
     '''
     positional = [ACCOUNTNAME, ACCOUNTAUTH, FROM_, TO_, SYMBOL, AMOUNT]
 
     optional = {
         "model": model,
         "fee": fee,
+        "message": message,
     }
     return 'didsendassetfrom', positional, optional
 
@@ -734,7 +744,7 @@ def listassets(ACCOUNTNAME=None, ACCOUNTAUTH=None, cert=None):
 
 
 @mvs_api_v2
-def sendassetfrom(ACCOUNTNAME, ACCOUNTAUTH, FROMADDRESS, TOADDRESS, SYMBOL, AMOUNT, model=None, fee=None):
+def sendassetfrom(ACCOUNTNAME, ACCOUNTAUTH, FROMADDRESS, TOADDRESS, SYMBOL, AMOUNT, model=None, fee=None, message=None):
     '''
     :param: ACCOUNTNAME(str): Account name required.
     :param: ACCOUNTAUTH(str): Account password(authorization) required.
@@ -752,12 +762,14 @@ def sendassetfrom(ACCOUNTNAME, ACCOUNTAUTH, FROMADDRESS, TOADDRESS, SYMBOL, AMOU
         TYPE=2;LQ=9000;LP=60000;UN=3;UC=20000,20000,20000;UQ=3000,3000,3000
     defaults to disable.
     :param: fee(int): "Transaction fee. defaults to 10000 ETP bits"
+    :param: message(str): "Information attached to this transaction"
     '''
     positional = [ACCOUNTNAME, ACCOUNTAUTH, FROMADDRESS, TOADDRESS, SYMBOL, AMOUNT]
 
     optional = {
         "model": model,
         "fee": fee,
+        "message": message,
     }
     return 'sendassetfrom', positional, optional
 
@@ -1005,7 +1017,7 @@ def decoderawtx(TRANSACTION):
 
 
 @mvs_api_v2
-def sendasset(ACCOUNTNAME, ACCOUNTAUTH, ADDRESS, SYMBOL, AMOUNT, model=None, fee=None):
+def sendasset(ACCOUNTNAME, ACCOUNTAUTH, ADDRESS, SYMBOL, AMOUNT, model=None, fee=None, message=None):
     '''
     :param: ACCOUNTNAME(str): Account name required.
     :param: ACCOUNTAUTH(str): Account password(authorization) required.
@@ -1022,12 +1034,14 @@ def sendasset(ACCOUNTNAME, ACCOUNTAUTH, ADDRESS, SYMBOL, AMOUNT, model=None, fee
         TYPE=2;LQ=9000;LP=60000;UN=3;UC=20000,20000,20000;UQ=3000,3000,3000
     defaults to disable.
     :param: fee(int): "Transaction fee. defaults to 10000 ETP bits"
+    :param: message(str): "Information attached to this transaction"
     '''
     positional = [ACCOUNTNAME, ACCOUNTAUTH, ADDRESS, SYMBOL, AMOUNT]
 
     optional = {
         "model": model,
         "fee": fee,
+        "message": message,
     }
     return 'sendasset', positional, optional
 
@@ -1233,4 +1247,3 @@ def getblock(HASH_OR_HEIGH, json=None, tx_json=None):
 
     }
     return 'getblock', positional, optional
-
