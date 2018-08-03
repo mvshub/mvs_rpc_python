@@ -2,9 +2,9 @@ from setuptools import setup, find_packages
 
 setup(
     name = 'mvs_rpc',
-    version = '0.1.0',
+    version = '0.1.1',
     keywords = ['mvs sdk', 'mvs client'],
-    description = 'python implement of mvs rpc',
+    description = 'python implement of mvs rpc, update to mvs-0.8.3',
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
