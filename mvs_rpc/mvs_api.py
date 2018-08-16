@@ -190,7 +190,7 @@ def getaccountasset(ACCOUNTNAME, ACCOUNTAUTH, SYMBOL=None, cert=None):
 
 
 @mvs_api_v2
-def didsendasset(ACCOUNTNAME, ACCOUNTAUTH, TO_, ASSET, AMOUNT, model=None, fee=None, message=None):
+def didsendasset(ACCOUNTNAME, ACCOUNTAUTH, TO_, ASSET, AMOUNT, model=None, fee=None, memo=None):
     '''
     :param: ACCOUNTNAME(str): Account name required.
     :param: ACCOUNTAUTH(str): Account password(authorization) required.
@@ -207,14 +207,14 @@ def didsendasset(ACCOUNTNAME, ACCOUNTAUTH, TO_, ASSET, AMOUNT, model=None, fee=N
         TYPE=2;LQ=9000;LP=60000;UN=3;UC=20000,20000,20000;UQ=3000,3000,3000
     defaults to disable.
     :param: fee(int): "Transaction fee. defaults to 10000 ETP bits"
-    :param: message(str): "Information attached to this transaction"
+    :param: memo(str): "Information attached to this transaction"
     '''
     positional = [ACCOUNTNAME, ACCOUNTAUTH, TO_, ASSET, AMOUNT]
 
     optional = {
         "model": model,
         "fee": fee,
-        "message": message,
+        "memo": memo,
     }
     return 'didsendasset', positional, optional
 
@@ -515,7 +515,7 @@ def fetchheaderext(ACCOUNTNAME, ACCOUNTAUTH, NUMBER):
 
 
 @mvs_api_v2
-def didsendassetfrom(ACCOUNTNAME, ACCOUNTAUTH, FROM_, TO_, SYMBOL, AMOUNT, model=None, fee=None, message=None):
+def didsendassetfrom(ACCOUNTNAME, ACCOUNTAUTH, FROM_, TO_, SYMBOL, AMOUNT, model=None, fee=None, memo=None):
     '''
     :param: ACCOUNTNAME(str): Account name required.
     :param: ACCOUNTAUTH(str): Account password(authorization) required.
@@ -533,14 +533,14 @@ def didsendassetfrom(ACCOUNTNAME, ACCOUNTAUTH, FROM_, TO_, SYMBOL, AMOUNT, model
         TYPE=2;LQ=9000;LP=60000;UN=3;UC=20000,20000,20000;UQ=3000,3000,3000
     defaults to disable.
     :param: fee(int): "Transaction fee. defaults to 10000 ETP bits"
-    :param: message(str): "Information attached to this transaction"
+    :param: memo(str): "Information attached to this transaction"
     '''
     positional = [ACCOUNTNAME, ACCOUNTAUTH, FROM_, TO_, SYMBOL, AMOUNT]
 
     optional = {
         "model": model,
         "fee": fee,
-        "message": message,
+        "memo": memo,
     }
     return 'didsendassetfrom', positional, optional
 
@@ -744,7 +744,7 @@ def listassets(ACCOUNTNAME=None, ACCOUNTAUTH=None, cert=None):
 
 
 @mvs_api_v2
-def sendassetfrom(ACCOUNTNAME, ACCOUNTAUTH, FROMADDRESS, TOADDRESS, SYMBOL, AMOUNT, model=None, fee=None, message=None):
+def sendassetfrom(ACCOUNTNAME, ACCOUNTAUTH, FROMADDRESS, TOADDRESS, SYMBOL, AMOUNT, model=None, fee=None, memo=None):
     '''
     :param: ACCOUNTNAME(str): Account name required.
     :param: ACCOUNTAUTH(str): Account password(authorization) required.
@@ -762,14 +762,14 @@ def sendassetfrom(ACCOUNTNAME, ACCOUNTAUTH, FROMADDRESS, TOADDRESS, SYMBOL, AMOU
         TYPE=2;LQ=9000;LP=60000;UN=3;UC=20000,20000,20000;UQ=3000,3000,3000
     defaults to disable.
     :param: fee(int): "Transaction fee. defaults to 10000 ETP bits"
-    :param: message(str): "Information attached to this transaction"
+    :param: memo(str): "Information attached to this transaction"
     '''
     positional = [ACCOUNTNAME, ACCOUNTAUTH, FROMADDRESS, TOADDRESS, SYMBOL, AMOUNT]
 
     optional = {
         "model": model,
         "fee": fee,
-        "message": message,
+        "memo": memo,
     }
     return 'sendassetfrom', positional, optional
 
@@ -1017,7 +1017,7 @@ def decoderawtx(TRANSACTION):
 
 
 @mvs_api_v2
-def sendasset(ACCOUNTNAME, ACCOUNTAUTH, ADDRESS, SYMBOL, AMOUNT, model=None, fee=None, message=None):
+def sendasset(ACCOUNTNAME, ACCOUNTAUTH, ADDRESS, SYMBOL, AMOUNT, model=None, fee=None, memo=None):
     '''
     :param: ACCOUNTNAME(str): Account name required.
     :param: ACCOUNTAUTH(str): Account password(authorization) required.
@@ -1034,14 +1034,14 @@ def sendasset(ACCOUNTNAME, ACCOUNTAUTH, ADDRESS, SYMBOL, AMOUNT, model=None, fee
         TYPE=2;LQ=9000;LP=60000;UN=3;UC=20000,20000,20000;UQ=3000,3000,3000
     defaults to disable.
     :param: fee(int): "Transaction fee. defaults to 10000 ETP bits"
-    :param: message(str): "Information attached to this transaction"
+    :param: memo(str): "Information attached to this transaction"
     '''
     positional = [ACCOUNTNAME, ACCOUNTAUTH, ADDRESS, SYMBOL, AMOUNT]
 
     optional = {
         "model": model,
         "fee": fee,
-        "message": message,
+        "memo": memo,
     }
     return 'sendasset', positional, optional
 
