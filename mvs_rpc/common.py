@@ -4,7 +4,7 @@ import json
 class RPC:
     version = "2.0"
     id = 0
-    url="http://127.0.0.1:8820/rpc/v2"
+    url="http://127.0.0.1:8820/rpc/v3"
 
     def __init__(self, method):
         self.method = method
@@ -14,7 +14,7 @@ class RPC:
     def __to_data(self, positional, optional):
         # filter the None value in the end of positional
 
-        params = filter(lambda x: x != None, positional)
+        params = [i for i in positional if i != None]
 
         params.append({})
         for key in optional:
