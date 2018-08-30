@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-from common import mvs_api_v2
+from .common import mvs_api_v3
 
-@mvs_api_v2
+@mvs_api_v3
 def didchangeaddress(ACCOUNTNAME, ACCOUNTAUTH, TOADDRESS, DIDSYMBOL, fee=None):
     '''
     :param: ACCOUNTNAME(str): Account name required.
@@ -18,7 +18,7 @@ def didchangeaddress(ACCOUNTNAME, ACCOUNTAUTH, TOADDRESS, DIDSYMBOL, fee=None):
     return 'didchangeaddress', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def signmultisigtx(ACCOUNTNAME, ACCOUNTAUTH, TRANSACTION, selfpublickey=None, broadcast=None):
     '''
     :param: ACCOUNTNAME(str): Account name required.
@@ -35,7 +35,7 @@ def signmultisigtx(ACCOUNTNAME, ACCOUNTAUTH, TRANSACTION, selfpublickey=None, br
     return 'signmultisigtx', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def registerdid(ACCOUNTNAME, ACCOUNTAUTH, ADDRESS, SYMBOL, fee=None, percentage=None):
     '''
     :param: ACCOUNTNAME(str): Account name required.
@@ -54,7 +54,7 @@ def registerdid(ACCOUNTNAME, ACCOUNTAUTH, ADDRESS, SYMBOL, fee=None, percentage=
     return 'registerdid', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def issue(ACCOUNTNAME, ACCOUNTAUTH, SYMBOL, model=None, fee=None, percentage=None):
     '''
     :param: ACCOUNTNAME(str): Account name required.
@@ -82,7 +82,7 @@ def issue(ACCOUNTNAME, ACCOUNTAUTH, SYMBOL, model=None, fee=None, percentage=Non
     return 'issue', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def importaccount(WORD, accountname, password, language=None, hd_index=None):
     '''
     :param: WORD([str1, str2, ...]): "The set of words that that make up the mnemonic. If not specified the words are read from STDIN."
@@ -102,7 +102,7 @@ def importaccount(WORD, accountname, password, language=None, hd_index=None):
     return 'importaccount', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def stopmining(ADMINNAME=None, ADMINAUTH=None):
     '''
     :param: ADMINNAME(str): Administrator required.(when administrator_required in mvs.conf is set true)
@@ -116,7 +116,7 @@ def stopmining(ADMINNAME=None, ADMINAUTH=None):
     return 'stopmining', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def createmultisigtx(ACCOUNTNAME, ACCOUNTAUTH, FROMADDRESS, TOADDRESS, AMOUNT, symbol=None, type=None, fee=None):
     '''
     :param: ACCOUNTNAME(str): Account name required.
@@ -138,7 +138,7 @@ def createmultisigtx(ACCOUNTNAME, ACCOUNTAUTH, FROMADDRESS, TOADDRESS, AMOUNT, s
     return 'createmultisigtx', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def getpublickey(ACCOUNTNAME, ACCOUNTAUTH, ADDRESS):
     '''
     :param: ACCOUNTNAME(str): Account name required.
@@ -153,7 +153,7 @@ def getpublickey(ACCOUNTNAME, ACCOUNTAUTH, ADDRESS):
     return 'getpublickey', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def deposit(ACCOUNTNAME, ACCOUNTAUTH, AMOUNT, address=None, deposit=None, fee=None):
     '''
     :param: ACCOUNTNAME(str): Account name required.
@@ -173,7 +173,7 @@ def deposit(ACCOUNTNAME, ACCOUNTAUTH, AMOUNT, address=None, deposit=None, fee=No
     return 'deposit', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def getaccountasset(ACCOUNTNAME, ACCOUNTAUTH, SYMBOL=None, cert=None):
     '''
     :param: ACCOUNTNAME(str): Account name required.
@@ -189,7 +189,7 @@ def getaccountasset(ACCOUNTNAME, ACCOUNTAUTH, SYMBOL=None, cert=None):
     return 'getaccountasset', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def didsendasset(ACCOUNTNAME, ACCOUNTAUTH, TO_, ASSET, AMOUNT, model=None, fee=None, memo=None):
     '''
     :param: ACCOUNTNAME(str): Account name required.
@@ -219,7 +219,7 @@ def didsendasset(ACCOUNTNAME, ACCOUNTAUTH, TO_, ASSET, AMOUNT, model=None, fee=N
     return 'didsendasset', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def burn(ACCOUNTNAME, ACCOUNTAUTH, SYMBOL, AMOUNT):
     '''
     :param: ACCOUNTNAME(str): Account name required.
@@ -235,7 +235,7 @@ def burn(ACCOUNTNAME, ACCOUNTAUTH, SYMBOL, AMOUNT):
     return 'burn', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def popblock(height):
     '''
     :param: height(int): "specify the starting point to pop out blocks. eg, if specified 1000000, then all blocks with height greater than or equal to 1000000 will be poped out."
@@ -248,7 +248,7 @@ def popblock(height):
     return 'popblock', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def listbalances(ACCOUNTNAME, ACCOUNTAUTH, deposited=None, nozero=None, greater_equal=None, lesser_equal=None):
     '''
     :param: deposited(bool): "list deposited ETPs, default is false."
@@ -268,7 +268,7 @@ def listbalances(ACCOUNTNAME, ACCOUNTAUTH, deposited=None, nozero=None, greater_
     return 'listbalances', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def createasset(ACCOUNTNAME, ACCOUNTAUTH, symbol, issuer, volume, rate=None, decimalnumber=None, description=None):
     '''
     :param: ACCOUNTNAME(str): Account name required.
@@ -293,7 +293,7 @@ def createasset(ACCOUNTNAME, ACCOUNTAUTH, symbol, issuer, volume, rate=None, dec
     return 'createasset', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def send(ACCOUNTNAME, ACCOUNTAUTH, TOADDRESS, AMOUNT, memo=None, fee=None):
     '''
     :param: ACCOUNTNAME(str): Account name required.
@@ -312,7 +312,7 @@ def send(ACCOUNTNAME, ACCOUNTAUTH, TOADDRESS, AMOUNT, memo=None, fee=None):
     return 'send', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def changepasswd(ACCOUNTNAME, ACCOUNTAUTH, password):
     '''
     :param: ACCOUNTNAME(str): Account name required.
@@ -327,7 +327,7 @@ def changepasswd(ACCOUNTNAME, ACCOUNTAUTH, password):
     return 'changepasswd', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def createrawtx(type, senders, receivers, symbol=None, deposit=None, mychange=None, message=None, fee=None):
     '''
     :param: type(int): "Transaction type. 0 -- transfer etp, 1 -- deposit etp, 3 -- transfer asset"
@@ -354,7 +354,7 @@ def createrawtx(type, senders, receivers, symbol=None, deposit=None, mychange=No
     return 'createrawtx', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def validateaddress(PAYMENT_ADDRESS=None):
     '''
     :param: PAYMENT_ADDRESS(str): "Valid payment address. If not specified the address is read from STDIN."
@@ -367,7 +367,7 @@ def validateaddress(PAYMENT_ADDRESS=None):
     return 'validateaddress', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def sendfrom(ACCOUNTNAME, ACCOUNTAUTH, FROMADDRESS, TOADDRESS, AMOUNT, memo=None, fee=None):
     '''
     :param: ACCOUNTNAME(str): Account name required.
@@ -387,7 +387,7 @@ def sendfrom(ACCOUNTNAME, ACCOUNTAUTH, FROMADDRESS, TOADDRESS, AMOUNT, memo=None
     return 'sendfrom', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def deletemultisig(ACCOUNTNAME, ACCOUNTAUTH, ADDRESS):
     '''
     :param: ACCOUNTNAME(str): Account name required.
@@ -402,7 +402,7 @@ def deletemultisig(ACCOUNTNAME, ACCOUNTAUTH, ADDRESS):
     return 'deletemultisig', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def listdids(ACCOUNTNAME=None, ACCOUNTAUTH=None):
     '''
     :param: ACCOUNTNAME(str): Account name required.
@@ -416,7 +416,7 @@ def listdids(ACCOUNTNAME=None, ACCOUNTAUTH=None):
     return 'listdids', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def getheight(ADMINNAME=None, ADMINAUTH=None):
     '''
     :param: ADMINNAME(str): Administrator required.(when administrator_required in mvs.conf is set true)
@@ -430,7 +430,7 @@ def getheight(ADMINNAME=None, ADMINAUTH=None):
     return 'getheight', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def didsend(ACCOUNTNAME, ACCOUNTAUTH, TO_, AMOUNT, memo=None, fee=None):
     '''
     :param: ACCOUNTNAME(str): Account name required.
@@ -449,7 +449,7 @@ def didsend(ACCOUNTNAME, ACCOUNTAUTH, TO_, AMOUNT, memo=None, fee=None):
     return 'didsend', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def transfercert(ACCOUNTNAME, ACCOUNTAUTH, TODID, SYMBOL, CERT, fee=None):
     '''
     :param: ACCOUNTNAME(str): Account name required.
@@ -467,7 +467,7 @@ def transfercert(ACCOUNTNAME, ACCOUNTAUTH, TODID, SYMBOL, CERT, fee=None):
     return 'transfercert', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def sendrawtx(TRANSACTION, fee=None):
     '''
     :param: TRANSACTION(str): "The input Base16 transaction to broadcast."
@@ -481,7 +481,7 @@ def sendrawtx(TRANSACTION, fee=None):
     return 'sendrawtx', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def issuecert(ACCOUNTNAME, ACCOUNTAUTH, TODID, SYMBOL, CERT, fee=None):
     '''
     :param: ACCOUNTNAME(str): Account name required.
@@ -499,7 +499,7 @@ def issuecert(ACCOUNTNAME, ACCOUNTAUTH, TODID, SYMBOL, CERT, fee=None):
     return 'issuecert', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def fetchheaderext(ACCOUNTNAME, ACCOUNTAUTH, NUMBER):
     '''
     :param: ACCOUNTNAME(str): Account name required.
@@ -514,7 +514,7 @@ def fetchheaderext(ACCOUNTNAME, ACCOUNTAUTH, NUMBER):
     return 'fetchheaderext', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def didsendassetfrom(ACCOUNTNAME, ACCOUNTAUTH, FROM_, TO_, SYMBOL, AMOUNT, model=None, fee=None, memo=None):
     '''
     :param: ACCOUNTNAME(str): Account name required.
@@ -545,7 +545,7 @@ def didsendassetfrom(ACCOUNTNAME, ACCOUNTAUTH, FROM_, TO_, SYMBOL, AMOUNT, model
     return 'didsendassetfrom', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def didsendmore(ACCOUNTNAME, ACCOUNTAUTH, receivers, mychange=None, fee=None):
     '''
     :param: ACCOUNTNAME(str): Account name required.
@@ -564,7 +564,7 @@ def didsendmore(ACCOUNTNAME, ACCOUNTAUTH, receivers, mychange=None, fee=None):
     return 'didsendmore', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def sendmore(ACCOUNTNAME, ACCOUNTAUTH, receivers, mychange=None, fee=None):
     '''
     :param: ACCOUNTNAME(str): Account name required.
@@ -583,7 +583,7 @@ def sendmore(ACCOUNTNAME, ACCOUNTAUTH, receivers, mychange=None, fee=None):
     return 'sendmore', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def deletelocalasset(ACCOUNTNAME, ACCOUNTAUTH, symbol):
     '''
     :param: ACCOUNTNAME(str): Account name required.
@@ -598,7 +598,7 @@ def deletelocalasset(ACCOUNTNAME, ACCOUNTAUTH, symbol):
     return 'deletelocalasset', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def listtxs(ACCOUNTNAME, ACCOUNTAUTH, address=None, height=(0, 0), symbol=None, limit=None, index=None):
     '''
     :param: ACCOUNTNAME(str): Account name required.
@@ -621,7 +621,7 @@ def listtxs(ACCOUNTNAME, ACCOUNTAUTH, address=None, height=(0, 0), symbol=None, 
     return 'listtxs', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def getmit(SYMBOL=None, trace=None, limit=None, index=None, current=None):
     '''
     :param: SYMBOL(str): "Asset symbol. If not specified then show whole network MIT symbols."
@@ -640,7 +640,7 @@ def getmit(SYMBOL=None, trace=None, limit=None, index=None, current=None):
     return 'getmit', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def getnewaccount(ACCOUNTNAME, ACCOUNTAUTH, language=None):
     '''
     :param: language(str): "Options are 'en', 'es', 'ja', 'zh_Hans', 'zh_Hant' and 'any', defaults to 'en'."
@@ -655,7 +655,7 @@ def getnewaccount(ACCOUNTNAME, ACCOUNTAUTH, language=None):
     return 'getnewaccount', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def listmits(ACCOUNTNAME=None, ACCOUNTAUTH=None):
     '''
     :param: ACCOUNTNAME(str): Account name required.
@@ -669,7 +669,7 @@ def listmits(ACCOUNTNAME=None, ACCOUNTAUTH=None):
     return 'listmits', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def shutdown(ADMINNAME=None, ADMINAUTH=None):
     '''
     :param: ADMINNAME(str): "admin name."
@@ -683,7 +683,7 @@ def shutdown(ADMINNAME=None, ADMINAUTH=None):
     return 'shutdown', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def signrawtx(ACCOUNTNAME, ACCOUNTAUTH, TRANSACTION):
     '''
     :param: ACCOUNTNAME(str): Account name required.
@@ -698,7 +698,7 @@ def signrawtx(ACCOUNTNAME, ACCOUNTAUTH, TRANSACTION):
     return 'signrawtx', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def getmemorypool(json=None, ADMINNAME=None, ADMINAUTH=None):
     '''
     :param: json(bool): "Json format or Raw format, default is Json(true)."
@@ -713,7 +713,7 @@ def getmemorypool(json=None, ADMINNAME=None, ADMINAUTH=None):
     return 'getmemorypool', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def getblockheader(hash=None, height=None):
     '''
     :param: hash(string of hash256): "The Base16 block hash."
@@ -728,7 +728,7 @@ def getblockheader(hash=None, height=None):
     return 'getblockheader', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def listassets(ACCOUNTNAME=None, ACCOUNTAUTH=None, cert=None):
     '''
     :param: ACCOUNTNAME(str): Account name required.
@@ -743,7 +743,7 @@ def listassets(ACCOUNTNAME=None, ACCOUNTAUTH=None, cert=None):
     return 'listassets', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def sendassetfrom(ACCOUNTNAME, ACCOUNTAUTH, FROMADDRESS, TOADDRESS, SYMBOL, AMOUNT, model=None, fee=None, memo=None):
     '''
     :param: ACCOUNTNAME(str): Account name required.
@@ -774,7 +774,7 @@ def sendassetfrom(ACCOUNTNAME, ACCOUNTAUTH, FROMADDRESS, TOADDRESS, SYMBOL, AMOU
     return 'sendassetfrom', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def getasset(SYMBOL=None, cert=None):
     '''
     :param: SYMBOL(str): "Asset symbol. If not specified, will show whole network asset symbols."
@@ -788,7 +788,7 @@ def getasset(SYMBOL=None, cert=None):
     return 'getasset', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def getinfo(ADMINNAME=None, ADMINAUTH=None):
     '''
     :param: ADMINNAME(str): Administrator required.(when administrator_required in mvs.conf is set true)
@@ -802,7 +802,7 @@ def getinfo(ADMINNAME=None, ADMINAUTH=None):
     return 'getinfo', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def secondaryissue(ACCOUNTNAME, ACCOUNTAUTH, TODID, SYMBOL, VOLUME, model=None, fee=None):
     '''
     :param: ACCOUNTNAME(str): Account name required.
@@ -830,7 +830,7 @@ def secondaryissue(ACCOUNTNAME, ACCOUNTAUTH, TODID, SYMBOL, VOLUME, model=None, 
     return 'secondaryissue', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def getaddressasset(ADDRESS, cert=None):
     '''
     :param: ADDRESS(str): "address"
@@ -844,7 +844,7 @@ def getaddressasset(ADDRESS, cert=None):
     return 'getaddressasset', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def getnewaddress(ACCOUNTNAME, ACCOUNTAUTH, number=None):
     '''
     :param: ACCOUNTNAME(str): Account name required.
@@ -859,7 +859,7 @@ def getnewaddress(ACCOUNTNAME, ACCOUNTAUTH, number=None):
     return 'getnewaddress', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def getbalance(ACCOUNTNAME, ACCOUNTAUTH):
     '''
     :param: ACCOUNTNAME(str): Account name required.
@@ -873,7 +873,7 @@ def getbalance(ACCOUNTNAME, ACCOUNTAUTH):
     return 'getbalance', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def getnewmultisig(ACCOUNTNAME, ACCOUNTAUTH, signaturenum, publickeynum, selfpublickey, publickey=None,
                    description=None):
     '''
@@ -897,7 +897,7 @@ def getnewmultisig(ACCOUNTNAME, ACCOUNTAUTH, signaturenum, publickeynum, selfpub
     return 'getnewmultisig', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def transfermit(ACCOUNTNAME, ACCOUNTAUTH, TODID, SYMBOL, fee=None):
     '''
     :param: ACCOUNTNAME(str): Account name required.
@@ -914,7 +914,7 @@ def transfermit(ACCOUNTNAME, ACCOUNTAUTH, TODID, SYMBOL, fee=None):
     return 'transfermit', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def deleteaccount(ACCOUNTNAME, ACCOUNTAUTH, LASTWORD):
     '''
     :param: ACCOUNTNAME(str): Account name required.
@@ -929,7 +929,7 @@ def deleteaccount(ACCOUNTNAME, ACCOUNTAUTH, LASTWORD):
     return 'deleteaccount', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def listmultisig(ACCOUNTNAME, ACCOUNTAUTH):
     '''
     :param: ACCOUNTNAME(str): Account name required.
@@ -943,7 +943,7 @@ def listmultisig(ACCOUNTNAME, ACCOUNTAUTH):
     return 'listmultisig', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def getdid(DidOrAddress=None):
     '''
     :param: DidOrAddress(str): "Did symbol or standard address; If no input parameters, then display whole network DIDs."
@@ -956,7 +956,7 @@ def getdid(DidOrAddress=None):
     return 'getdid', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def startmining(ACCOUNTNAME, ACCOUNTAUTH, address=None, number=None):
     '''
     :param: ACCOUNTNAME(str): Account name required.
@@ -973,7 +973,7 @@ def startmining(ACCOUNTNAME, ACCOUNTAUTH, address=None, number=None):
     return 'startmining', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def getwork(ADMINNAME=None, ADMINAUTH=None):
     '''
     :param: ADMINNAME(str): Administrator required.(when administrator_required in mvs.conf is set true)
@@ -987,7 +987,7 @@ def getwork(ADMINNAME=None, ADMINAUTH=None):
     return 'getwork', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def importkeyfile(ACCOUNTNAME, ACCOUNTAUTH, FILE, FILECONTENT=None):
     '''
     :param: ACCOUNTNAME(str): Account name required.
@@ -1003,7 +1003,7 @@ def importkeyfile(ACCOUNTNAME, ACCOUNTAUTH, FILE, FILECONTENT=None):
     return 'importkeyfile', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def decoderawtx(TRANSACTION):
     '''
     :param: TRANSACTION(str): "The input Base16 transaction to sign."
@@ -1016,7 +1016,7 @@ def decoderawtx(TRANSACTION):
     return 'decoderawtx', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def sendasset(ACCOUNTNAME, ACCOUNTAUTH, ADDRESS, SYMBOL, AMOUNT, model=None, fee=None, memo=None):
     '''
     :param: ACCOUNTNAME(str): Account name required.
@@ -1046,7 +1046,7 @@ def sendasset(ACCOUNTNAME, ACCOUNTAUTH, ADDRESS, SYMBOL, AMOUNT, model=None, fee
     return 'sendasset', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def submitwork(NONCE, HEADERHASH, MIXHASH):
     '''
     :param: NONCE(str): "nonce. without leading 0x"
@@ -1061,7 +1061,7 @@ def submitwork(NONCE, HEADERHASH, MIXHASH):
     return 'submitwork', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def getaddressetp(PAYMENT_ADDRESS):
     '''
     :param: PAYMENT_ADDRESS(string of Base58-encoded public key address): "The payment address. If not specified the address is read from STDIN."
@@ -1074,7 +1074,7 @@ def getaddressetp(PAYMENT_ADDRESS):
     return 'getaddressetp', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def gettx(HASH, json=None):
     '''
     :param: json(bool): "Json/Raw format, default is '--json=true'."
@@ -1088,7 +1088,7 @@ def gettx(HASH, json=None):
     return 'gettx', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def getmininginfo(ADMINNAME=None, ADMINAUTH=None):
     '''
     :param: ADMINNAME(str): Administrator required.(when administrator_required in mvs.conf is set true)
@@ -1102,7 +1102,7 @@ def getmininginfo(ADMINNAME=None, ADMINAUTH=None):
     return 'getmininginfo', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def registermit(ACCOUNTNAME, ACCOUNTAUTH, TODID, SYMBOL=None, content=None, mits=None, fee=None):
     '''
     :param: ACCOUNTNAME(str): Account name required.
@@ -1123,7 +1123,7 @@ def registermit(ACCOUNTNAME, ACCOUNTAUTH, TODID, SYMBOL=None, content=None, mits
     return 'registermit', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def setminingaccount(ACCOUNTNAME, ACCOUNTAUTH, PAYMENT_ADDRESS):
     '''
     :param: ACCOUNTNAME(str): Account name required.
@@ -1138,7 +1138,7 @@ def setminingaccount(ACCOUNTNAME, ACCOUNTAUTH, PAYMENT_ADDRESS):
     return 'setminingaccount', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def listaddresses(ACCOUNTNAME, ACCOUNTAUTH):
     '''
     :param: ACCOUNTNAME(str): Account name required.
@@ -1152,7 +1152,7 @@ def listaddresses(ACCOUNTNAME, ACCOUNTAUTH):
     return 'listaddresses', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def dumpkeyfile(ACCOUNTNAME, ACCOUNTAUTH, LASTWORD, DESTINATION=None, data=None):
     '''
     :param: ACCOUNTNAME(str): Account name required.
@@ -1169,7 +1169,7 @@ def dumpkeyfile(ACCOUNTNAME, ACCOUNTAUTH, LASTWORD, DESTINATION=None, data=None)
     return 'dumpkeyfile', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def getpeerinfo(ADMINNAME=None, ADMINAUTH=None):
     '''
     :param: ADMINNAME(str): Administrator required.(when administrator_required in mvs.conf is set true)
@@ -1183,7 +1183,7 @@ def getpeerinfo(ADMINNAME=None, ADMINAUTH=None):
     return 'getpeerinfo', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def didsendfrom(ACCOUNTNAME, ACCOUNTAUTH, FROM_, TO_, AMOUNT, memo=None, fee=None):
     '''
     :param: ACCOUNTNAME(str): Account name required.
@@ -1203,7 +1203,7 @@ def didsendfrom(ACCOUNTNAME, ACCOUNTAUTH, FROM_, TO_, AMOUNT, memo=None, fee=Non
     return 'didsendfrom', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def getaccount(ACCOUNTNAME, ACCOUNTAUTH, LASTWORD):
     '''
     :param: ACCOUNTNAME(str): Account name required.
@@ -1218,7 +1218,7 @@ def getaccount(ACCOUNTNAME, ACCOUNTAUTH, LASTWORD):
     return 'getaccount', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def addnode(NODEADDRESS, ADMINNAME=None, ADMINAUTH=None, operation=None):
     '''
     :param: NODEADDRESS(str): "The target node address[x.x.x.x:port]."
@@ -1234,7 +1234,7 @@ def addnode(NODEADDRESS, ADMINNAME=None, ADMINAUTH=None, operation=None):
     return 'addnode', positional, optional
 
 
-@mvs_api_v2
+@mvs_api_v3
 def getblock(HASH_OR_HEIGH, json=None, tx_json=None):
     '''
     :param: HASH_OR_HEIGH(str): "block hash or block height"

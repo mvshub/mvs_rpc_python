@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name = 'mvs_rpc',
-    version = '0.1.2',
+    version = '0.1.4',
     keywords = ['mvs sdk', 'mvs client'],
     description = 'python implement of mvs rpc, update to mvs-0.8.3, update to api v3',
     classifiers=[
@@ -13,8 +13,8 @@ setup(
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
-		'Programming Language :: Python :: 3.5',
-		'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
     ],
     license = 'MIT License',
     install_requires = ['requests>=2.18.4'],

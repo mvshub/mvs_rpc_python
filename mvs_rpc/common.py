@@ -34,7 +34,7 @@ class RPC:
 
         return rpc_rsp
 
-def mvs_api_v2(func):
+def mvs_api_v3(func):
     def wrapper(*args, **kwargs):
         cmd, positional, optional = func(*args, **kwargs)
         rpc_cmd = RPC(cmd)
